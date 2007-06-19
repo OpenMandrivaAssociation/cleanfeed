@@ -1,12 +1,16 @@
+%define name	cleanfeed
+%define version 20020501
+%define release %mkrel 1
+
 Summary:	A spam filter for Usenet news servers.
-Name:		cleanfeed
-%define version 0.95.7b
+Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 14
-License:	distributable
+Release:	%{release}
+License:	Artistic
 Group:		System/Servers
-Source0:	ftp://ftp.exit109.com/users/jeremy/cleanfeed-%{version}.tar.bz2
-Patch0:		cleanfeed-0.95.7b-redhat.patch
+URL:		http://www.bofh.it/~md/cleanfeed/
+Source0:	http://www.bofh.it/~md/cleanfeed/%{name}-%{version}.tgz
+Patch0:		cleanfeed-20020501-config.patch
 BuildRoot:	%{_tmppath}/%{name}-root
 BuildArch:	noarch
 
@@ -21,15 +25,18 @@ Install the cleanfeed package if you need a spam filter for a Usenet news
 server.
 
 %prep
-%setup
-%patch0 -p1 -b .rh
+%setup -q
+%patch0 -p1 -b .config
 
 chmod 644 CHANGES README
 
 %install
 mkdir -p $RPM_BUILD_ROOT/{%{_sysconfdir}/news,%{_mandir}/man8,%{_libdir}/news/bin/control}
-install -m 0644 cleanfeed.conf $RPM_BUILD_ROOT/%{_sysconfdir}/news/
-install -m 0644 cleanfeed.8 $RPM_BUILD_ROOT/%{_mandir}/man8/
+install -m 0644 cleanfeed.local.sample $RPM_BUILD_ROOT/%{_sysconfdir}/news/cleanfeed.local
+install -m 0644 bad_adult_paths $RPM_BUILD_ROOT/%{_sysconfdir}/news
+install -m 0644 bad_cancel_paths $RPM_BUILD_ROOT/%{_sysconfdir}/news
+install -m 0644 bad_paths $RPM_BUILD_ROOT/%{_sysconfdir}/news
+install -m 0644 bad_hosts $RPM_BUILD_ROOT/%{_sysconfdir}/news
 install -m 0755 cleanfeed $RPM_BUILD_ROOT/%{_libdir}/news/bin/control/filter_innd.pl
 
 %clean
@@ -38,7 +45,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %doc CHANGES README
-%{_mandir}/man8/cleanfeed.8*
-%attr(-,news,news) %config(noreplace) %{_sysconfdir}/news/cleanfeed.conf
+%attr(-,news,news) %config(noreplace) %{_sysconfdir}/news/cleanfeed.local
+%attr(-,news,news) %config(noreplace) %{_sysconfdir}/news/bad_adult_paths
+%attr(-,news,news) %config(noreplace) %{_sysconfdir}/news/bad_cancel_paths
+%attr(-,news,news) %config(noreplace) %{_sysconfdir}/news/bad_paths
+%attr(-,news,news) %config(noreplace) %{_sysconfdir}/news/bad_hosts
 %attr(-,news,news) %{_libdir}/news/bin/control/filter_innd.pl
 
