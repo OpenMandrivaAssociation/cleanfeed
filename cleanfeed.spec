@@ -2,7 +2,7 @@
 %define version 20020501
 %define release %mkrel 1
 
-Summary:	A spam filter for Usenet news servers.
+Summary:	A spam filter for Usenet news servers
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
