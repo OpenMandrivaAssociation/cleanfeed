@@ -11,7 +11,6 @@ Group:		System/Servers
 URL:		http://www.bofh.it/~md/cleanfeed/
 Source0:	http://www.bofh.it/~md/cleanfeed/%{name}-%{version}.tgz
 Patch0:		cleanfeed-20020501-config.patch
-BuildRoot:	%{_tmppath}/%{name}-root
 BuildArch:	noarch
 
 %description
