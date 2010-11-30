@@ -1,6 +1,6 @@
 %define name	cleanfeed
 %define version 20020501
-%define release %mkrel 7
+%define release %mkrel 8
 
 Summary:	A spam filter for Usenet news servers
 Name:		%{name}
