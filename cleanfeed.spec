@@ -31,16 +31,16 @@ server.
 chmod 644 CHANGES README
 
 %install
-mkdir -p $RPM_BUILD_ROOT/{%{_sysconfdir}/news,%{_mandir}/man8,%{_libdir}/news/bin/control}
-install -m 0644 cleanfeed.local.sample $RPM_BUILD_ROOT/%{_sysconfdir}/news/cleanfeed.local
-install -m 0644 bad_adult_paths $RPM_BUILD_ROOT/%{_sysconfdir}/news
-install -m 0644 bad_cancel_paths $RPM_BUILD_ROOT/%{_sysconfdir}/news
-install -m 0644 bad_paths $RPM_BUILD_ROOT/%{_sysconfdir}/news
-install -m 0644 bad_hosts $RPM_BUILD_ROOT/%{_sysconfdir}/news
-install -m 0755 cleanfeed $RPM_BUILD_ROOT/%{_libdir}/news/bin/control/filter_innd.pl
+mkdir -p %{buildroot}/{%{_sysconfdir}/news,%{_mandir}/man8,%{_libdir}/news/bin/control}
+install -m 0644 cleanfeed.local.sample %{buildroot}/%{_sysconfdir}/news/cleanfeed.local
+install -m 0644 bad_adult_paths %{buildroot}/%{_sysconfdir}/news
+install -m 0644 bad_cancel_paths %{buildroot}/%{_sysconfdir}/news
+install -m 0644 bad_paths %{buildroot}/%{_sysconfdir}/news
+install -m 0644 bad_hosts %{buildroot}/%{_sysconfdir}/news
+install -m 0755 cleanfeed %{buildroot}/%{_libdir}/news/bin/control/filter_innd.pl
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
