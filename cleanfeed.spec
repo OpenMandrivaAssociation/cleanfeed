@@ -1,7 +1,7 @@
 Summary:	A spam filter for Usenet news servers
 Name:		cleanfeed
 Version:	20020501
-Release:	19
+Release:	20
 License:	Artistic
 Group:		System/Servers
 Url:		http://www.bofh.it/~md/cleanfeed/
