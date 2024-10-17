@@ -4,7 +4,7 @@ Version:	20020501
 Release:	21
 License:	Artistic
 Group:		System/Servers
-Url:		http://www.bofh.it/~md/cleanfeed/
+Url:		https://www.bofh.it/~md/cleanfeed/
 Source0:	http://www.bofh.it/~md/cleanfeed/%{name}-%{version}.tgz
 Patch0:		cleanfeed-20020501-config.patch
 BuildArch:	noarch
